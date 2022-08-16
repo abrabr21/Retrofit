@@ -10,9 +10,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitv1.R
 import com.example.retrofitv1.pojo.Article
+import com.example.retrofitv1.pojo.Entity
 import com.squareup.picasso.Picasso
 
-class ArticleAdapter(private val context: Context, private val articleList: MutableList<Article>):
+class ArticleAdapter(private val context: Context, private val articleList: Entity):
     RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -37,16 +38,16 @@ class ArticleAdapter(private val context: Context, private val articleList: Muta
         return ViewHolder(itemView)
     }
 
-    override fun getItemCount() = articleList.size
+    override fun getItemCount() = articleList.articles.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listItem = articleList[position]
+        val listItem = articleList.articles[position]
         holder.bind(listItem)
 
-        Picasso.get().load(articleList[position].urlToImage).into(holder.image)
-        holder.txt_name.text = articleList[position].title
-        holder.txt_team.text = articleList[position].author
-        holder.content.text = articleList[position].content
+        Picasso.get().load(listItem.urlToImage).into(holder.image)
+        holder.txt_name.text = listItem.title
+        holder.txt_team.text = listItem.author
+        holder.content.text = listItem.content
     }
 
 }

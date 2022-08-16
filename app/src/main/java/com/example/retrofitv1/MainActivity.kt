@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<Entity>, response: Response<Entity>) {
-//                adapter = ArticleAdapter(baseContext, response.body() as MutableList<Article>)
+                adapter = ArticleAdapter(baseContext, response.body() as Entity)
                println(response.body())
-//                adapter.notifyDataSetChanged()
-//                binding.recyclerMovieList.adapter = adapter
+                adapter.notifyDataSetChanged()
+                binding.recyclerMovieList.adapter = adapter
 
 
             }

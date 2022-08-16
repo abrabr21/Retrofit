@@ -8,6 +8,6 @@ import retrofit2.Callback
 data class Entity (
     @SerializedName("status") val status:String,
     @SerializedName("totalResults") val totalResults:Int,
-    @SerializedName("articles") var articles:ArrayList<Article>
+    @SerializedName("articles") var articles:List<Article>
 
         )
