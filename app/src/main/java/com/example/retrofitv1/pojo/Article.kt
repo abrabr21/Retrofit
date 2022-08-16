@@ -1,11 +1,13 @@
 package com.example.retrofitv1.pojo
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
 import javax.xml.transform.Source
 
-
+@Entity
 data class Article (
 
     @SerializedName("source")
@@ -14,6 +16,7 @@ data class Article (
 
     @SerializedName("author")
     @Expose
+    @PrimaryKey
      var author: String? = null,
 
     @SerializedName("title")

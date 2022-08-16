@@ -12,8 +12,6 @@ import com.example.retrofitv1.databinding.ActivityMainBinding
 import com.example.retrofitv1.pojo.Article
 import com.example.retrofitv1.pojo.Entity
 import retrofit2.*
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -39,8 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun getAllMovieList() {
 
 
-
-        mService.getArticlesList("us","business")
+        println(mService.getArticlesList("us", "business"))
         mService.getArticlesList("us","business").enqueue(object : Callback<Entity> {
             override fun onFailure(call: Call<Entity>, t: Throwable) {
                 println("FAIL     "+t.message)
