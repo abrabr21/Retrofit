@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 import javax.xml.transform.Source
 
 
-data class Article (
+data class ArticleResponse (
 
     @SerializedName("source")
 

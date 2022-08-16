@@ -1,7 +1,7 @@
 package com.example.retrofitv1.database
 
 import androidx.room.*
-import com.example.retrofitv1.pojo.Article
+import com.example.retrofitv1.pojo.ArticleResponse
 
 
 @Dao
@@ -10,14 +10,14 @@ interface DAO {
     val all: List<Any?>?
 
     @Query("SELECT * FROM article WHERE author = :author")
-    fun getById(id: Long): Article?
+    fun getById(id: Long): ArticleResponse?
 
     @Insert
-    fun insert(employee: Article?)
+    fun insert(employee: ArticleResponse?)
 
     @Update
-    fun update(employee: Article?)
+    fun update(employee: ArticleResponse?)
 
     @Delete
-    fun delete(employee: Article?)
+    fun delete(employee: ArticleResponse?)
 }

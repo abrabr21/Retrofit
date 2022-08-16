@@ -9,11 +9,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitv1.R
-import com.example.retrofitv1.pojo.Article
-import com.example.retrofitv1.pojo.Entity
+import com.example.retrofitv1.pojo.ArticleResponse
+import com.example.retrofitv1.pojo.EntityResponse
 import com.squareup.picasso.Picasso
 
-class ArticleAdapter(private val context: Context, private val articleList: Entity):
+class ArticleAdapter(private val context: Context, private val articleList: EntityResponse):
     RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -22,7 +22,7 @@ class ArticleAdapter(private val context: Context, private val articleList: Enti
         val txt_team: TextView = itemView.findViewById(R.id.txt_team)
         val content: TextView = itemView.findViewById(R.id.txt_createdby)
 
-        fun bind(listItem: Article) {
+        fun bind(listItem: ArticleResponse) {
             image.setOnClickListener {
                 Toast.makeText(it.context, "нажал на ${image}", Toast.LENGTH_SHORT)
                     .show()
@@ -38,10 +38,10 @@ class ArticleAdapter(private val context: Context, private val articleList: Enti
         return ViewHolder(itemView)
     }
 
-    override fun getItemCount() = articleList.articles.size
+    override fun getItemCount() = articleList.articleResponses.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listItem = articleList.articles[position]
+        val listItem = articleList.articleResponses[position]
         holder.bind(listItem)
 
         Picasso.get().load(listItem.urlToImage).into(holder.image)
