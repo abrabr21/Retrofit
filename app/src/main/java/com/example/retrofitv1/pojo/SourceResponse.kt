@@ -1,7 +1,10 @@
 package com.example.retrofitv1.pojo
 
-data class SourceResponse(
-    val id:String?=null,
+import androidx.room.ColumnInfo
 
+data class SourceResponse(
+    @ColumnInfo
+    val id:String?=null,
+    @ColumnInfo
     val name:String
 )
