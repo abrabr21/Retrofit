@@ -13,8 +13,9 @@ import com.example.retrofitv1.pojo.ArticleResponse
 import com.example.retrofitv1.pojo.EntityResponse
 import com.squareup.picasso.Picasso
 
-class ArticleAdapter(private val context: Context, private val articleList: EntityResponse):
+class ArticleAdapter(private var articleList: List<ArticleResponse>):
     RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
+
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val image: ImageView = itemView.findViewById(R.id.image_movie)
@@ -38,16 +39,21 @@ class ArticleAdapter(private val context: Context, private val articleList: Enti
         return ViewHolder(itemView)
     }
 
-    override fun getItemCount() = articleList.articleResponses.size
+    override fun getItemCount() =  articleList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listItem = articleList.articleResponses[position]
+        val listItem = articleList [position]
         holder.bind(listItem)
 
         Picasso.get().load(listItem.urlToImage).into(holder.image)
         holder.txt_name.text = listItem.title
         holder.txt_team.text = listItem.author
         holder.content.text = listItem.content
+    }
+
+    fun updateList(newArticleList : List<ArticleResponse>){
+        articleList = newArticleList
+        notifyDataSetChanged()
     }
 
 }

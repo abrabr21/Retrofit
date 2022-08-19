@@ -18,42 +18,4 @@ public abstract class ArticleItemRoomDB : RoomDatabase() {
 
     abstract fun articleItemDao(): ArticleItemDao
 
-    companion object {
-
-        @Volatile
-        private var INSTANCE: ArticleItemRoomDB? = null
-
-        fun getDatabase(context: Context, scope: CoroutineScope): ArticleItemRoomDB {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    ArticleItemRoomDB::class.java,
-                    "article_database"
-                ).build()
-
-                INSTANCE = instance
-
-                // return instance
-                instance
-            }
-        }
-    }
-    private class ArticleItemCallback(val scope :CoroutineScope):RoomDatabase.Callback(){
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-
-            INSTANCE?.let{articalItemRoomDB->
-                scope.launch {
-                    var mService = Common.retrofitService
-                    println(mService.getArticlesList("us", "business").awaitResponse())
-
-
-                }
-                scope.launch {
-
-                }
-
-            }
-        }
-    }
 }

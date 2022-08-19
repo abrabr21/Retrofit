@@ -12,9 +12,7 @@ import javax.xml.transform.Source
 @Entity(tableName = "Articles")
 data class ArticleResponse (
 
-//    @SerializedName("source")
-//    @ColumnInfo
-//     var source: SourceResponse? = null,
+
 
     @SerializedName("author")
     @ColumnInfo

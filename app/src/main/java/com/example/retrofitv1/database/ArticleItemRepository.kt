@@ -1,12 +1,13 @@
 package com.example.retrofitv1.database
 
 import android.support.annotation.WorkerThread
+import com.example.retrofitv1.Retrofit.RetrofitService
 import com.example.retrofitv1.pojo.ArticleResponse
 import kotlinx.coroutines.flow.Flow
 
 class ArticleItemRepository(private val articleItemDao: ArticleItemDao) {
 
-    val alArticleItems: Flow<List<ArticleResponse>> = articleItemDao.getArticleItems()
+    val alArticleItems: Flow<List<ArticleResponse>> = articleItemDao.getAll()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
